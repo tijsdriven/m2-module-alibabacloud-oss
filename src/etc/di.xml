@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (C) IT-Consultis - All Rights Reserved
+  ~ 2011-2023 IT-Consultis
+  ~
+  ~ This source code is protected under international copyright law.  All rights reserved and protected by the copyright holders.
+  ~ This file is confidential and only available to authorized individuals with the permission of the copyright holders.
+  ~ If you encounter this file and do not have permission, please contact the copyright holders and delete this file.
+  ~
+  ~ @author IT-Consultis Ltd
+  ~ @copyright 2011-2023 IT-Consultis Ltd
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+  <preference for="TijsDriven\AlibabaCloudOss\Api\GetTreeInterface" type="TijsDriven\AlibabaCloudOss\Model\GetTree"/>
+
+  <type name="TijsDriven\AlibabaCloudOss\Driver\AlibabaCloudOssFactory">
+    <arguments>
+      <argument name="getToken" xsi:type="object">TijsDriven\AlibabaCloud\Model\Usecase\GetToken\Proxy</argument>
+    </arguments>
+  </type>
+  <type name="Magento\RemoteStorage\Driver\DriverFactoryPool">
+    <arguments>
+      <argument name="pool" xsi:type="array">
+        <item name="tijsdriven-alibabacloud-oss" xsi:type="object">TijsDriven\AlibabaCloudOss\Driver\AlibabaCloudOssFactory</item>
+      </argument>
+    </arguments>
+  </type>
+  <type name="Magento\RemoteStorage\Driver\Adapter\MetadataProvider">
+    <arguments>
+      <argument name="adapter" xsi:type="object">TijsDriven\Flysystem\AlibabaCloudOss\AlibabaCloudOssAdapter</argument>
+    </arguments>
+  </type>
+</config>
