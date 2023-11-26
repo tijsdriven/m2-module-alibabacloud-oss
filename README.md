@@ -10,8 +10,8 @@ to use the OSS as the media remote storage.
     'driver' => 'tijsdriven-alibabacloud-oss',
     'prefix' => '',
     'config' => [
-        'region' => 'oss-eu-central-1',
-        'bucket' => 'magento-test',
+        'region' => 'oss-cn-hangzhou',
+        'bucket' => 'my-oss-bucket',
     ]
 ]
 ```
